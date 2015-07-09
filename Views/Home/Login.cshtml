@@ -1,0 +1,23 @@
+@model HelloMvc.Models.AuthUser
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Login Page</h1>
+
+@using(Html.BeginForm())
+{
+@Html.ValidationSummary()
+    @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+    </div>
+    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+    </div>
+    <input type="submit" value="Sign In" />
+}
