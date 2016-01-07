@@ -1,6 +1,5 @@
 using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.Framework.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace HelloMvc
 {
@@ -13,11 +12,12 @@ namespace HelloMvc
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UseErrorPage();
+            app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
             
             app.UseCookieAuthentication(options =>{
-                options.AutomaticAuthentication = true;
+                options.AutomaticAuthenticate = true;
+                options.AutomaticChallenge = true;
                 options.LoginPath = "/Home/Login";
             });
             
@@ -29,3 +29,5 @@ namespace HelloMvc
         }
     }
 }
+
+
